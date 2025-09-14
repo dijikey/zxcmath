@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="resource/icon.svg" width="320px" />
+<img src="resource/icon.svg" width="156" />
   
 # ZXC Math
 

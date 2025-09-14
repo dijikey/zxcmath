@@ -1,8 +1,8 @@
-use crate::Vector;
+use crate::Vector3;
 
 mod traits;
 
-impl Vector {
+impl Vector3 {
     // CONSTRUCTOR
     #[inline]
     pub const fn new(x: f64, y: f64, z: f64) -> Self { Self { x, y, z } }
@@ -33,20 +33,20 @@ impl Vector {
     pub const fn unpack_array(self) -> [f64; 3] { [self.x, self.y, self.z] }
     // STATIC
     #[inline]
-    pub fn projection(lhs: &Vector, rhs: &Vector) -> Vector {
-        let normalize = Vector::normalized(&lhs);
-        let scl = Vector::dot(&lhs, &rhs);
+    pub fn projection(lhs: &Vector3, rhs: &Vector3) -> Vector3 {
+        let normalize = Vector3::normalized(&lhs);
+        let scl = Vector3::dot(&lhs, &rhs);
         normalize * scl
     }
     #[inline]
-    pub fn lerp(vec: &Vector, vec2: &Vector, t: f64) -> Vector {
+    pub fn lerp(vec: &Vector3, vec2: &Vector3, t: f64) -> Vector3 {
         *vec * (1.0 - t) + *vec2 * t
     }
     #[inline]
-    pub fn distance(lhs: &Vector, rhs: &Vector) -> f64 { (*lhs - *rhs).magnitude() }
+    pub fn distance(lhs: &Vector3, rhs: &Vector3) -> f64 { (*lhs - *rhs).magnitude() }
     #[inline]
-    pub const fn cross_product(lhs: &Vector, rhs: &Vector) -> Vector {
-        Vector {
+    pub const fn cross_product(lhs: &Vector3, rhs: &Vector3) -> Vector3 {
+        Vector3 {
             x: lhs.y * rhs.z - lhs.z * rhs.y,
             y: lhs.z * rhs.x - lhs.x * rhs.z,
             z: lhs.x * rhs.y - lhs.y * rhs.x,
@@ -69,19 +69,19 @@ impl Vector {
         }
     }
     #[inline]
-    pub fn abs(vec: &Vector) -> Self { Self::new(vec.x.abs(), vec.y.abs(), vec.z.abs()) }
+    pub fn abs(vec: &Vector3) -> Self { Self::new(vec.x.abs(), vec.y.abs(), vec.z.abs()) }
     #[inline]
     /// Is DOT function
-    pub fn dot(lhs: &Vector, rhs: &Vector) -> f64 { lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z }
+    pub fn dot(lhs: &Vector3, rhs: &Vector3) -> f64 { lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z }
     #[inline]
-    pub fn normalized(vec: &Vector) -> Vector {
+    pub fn normalized(vec: &Vector3) -> Vector3 {
         let mut len = vec.magnitude();
         debug_assert!(len <= 0.0, "Divide by 0 or len above 0");
         if len < f64::EPSILON { 
             /* CODE */ 
         }
         if len <= 0.0 { len = f64::EPSILON }
-        Vector {
+        Vector3 {
             x: vec.x / len,
             y: vec.y / len,
             z: vec.z / len,
@@ -94,7 +94,7 @@ impl Vector {
     pub fn is_infinite(&self) -> bool { self.x.is_infinite() || self.y.is_infinite() || self.z.is_infinite() }
 }
 
-impl Vector {
+impl Vector3 {
     pub const ZERO: Self = Self { x: 0.0, y: 0.0, z: 0.0 };
     pub const ONE: Self = Self { x: 1.0, y: 1.0, z: 1.0 };
     pub const X: Self = Self { x: 1.0, y: 0.0, z: 0.0 };

@@ -1,11 +1,11 @@
 use std::ops::*;
-use crate::vector::Vector;
+use crate::vector::Vector3;
 // ADD
-impl Add<Vector> for Vector {
-    type Output = Vector;
+impl Add<Vector3> for Vector3 {
+    type Output = Vector3;
     #[inline]
-    fn add(self, rhs: Vector) -> Self::Output {
-        Vector{
+    fn add(self, rhs: Vector3) -> Self::Output {
+        Vector3 {
             x: self.x + rhs.x,
             y: self.y + rhs.y,
             z: self.z + rhs.z,
@@ -13,20 +13,20 @@ impl Add<Vector> for Vector {
     }
 }
 
-impl AddAssign<Vector> for Vector {
+impl AddAssign<Vector3> for Vector3 {
     #[inline]
-    fn add_assign(&mut self, rhs: Vector) {
+    fn add_assign(&mut self, rhs: Vector3) {
         self.x += rhs.x;
         self.y += rhs.y;
         self.z += rhs.z;
     }
 }
 // ADD SCALAR
-impl Add<f64> for Vector {
-    type Output = Vector;
+impl Add<f64> for Vector3 {
+    type Output = Vector3;
 
     fn add(self, rhs: f64) -> Self::Output {
-        Vector{
+        Vector3 {
             x: self.x + rhs,
             y: self.y + rhs,
             z: self.z + rhs,
@@ -34,7 +34,7 @@ impl Add<f64> for Vector {
     }
 }
 
-impl AddAssign<f64> for Vector {
+impl AddAssign<f64> for Vector3 {
     fn add_assign(&mut self, rhs: f64) {
         self.x += rhs;
         self.y += rhs;
@@ -42,11 +42,11 @@ impl AddAssign<f64> for Vector {
     }
 }
 // SUB
-impl Sub<Vector> for Vector {
-    type Output = Vector;
+impl Sub<Vector3> for Vector3 {
+    type Output = Vector3;
 
-    fn sub(self, rhs: Vector) -> Self::Output {
-        Vector{
+    fn sub(self, rhs: Vector3) -> Self::Output {
+        Vector3 {
             x: self.x - rhs.x,
             y: self.y - rhs.y,
             z: self.z - rhs.z,
@@ -54,19 +54,19 @@ impl Sub<Vector> for Vector {
     }
 }
 
-impl SubAssign<Vector> for Vector {
-    fn sub_assign(&mut self, rhs: Vector) {
+impl SubAssign<Vector3> for Vector3 {
+    fn sub_assign(&mut self, rhs: Vector3) {
         self.x -= rhs.x;
         self.y -= rhs.y;
         self.z -= rhs.z;
     }
 }
 // SUB SCALAR
-impl Sub<f64> for Vector {
-    type Output = Vector;
+impl Sub<f64> for Vector3 {
+    type Output = Vector3;
 
     fn sub(self, rhs: f64) -> Self::Output {
-        Vector{
+        Vector3 {
             x: self.x - rhs,
             y: self.y - rhs,
             z: self.z - rhs,
@@ -74,7 +74,7 @@ impl Sub<f64> for Vector {
     }
 }
 
-impl SubAssign<f64> for Vector {
+impl SubAssign<f64> for Vector3 {
     fn sub_assign(&mut self, rhs: f64) {
         self.x -= rhs;
         self.y -= rhs;
@@ -82,30 +82,30 @@ impl SubAssign<f64> for Vector {
     }
 }
 // Mul
-impl Mul<Vector> for Vector {
-    type Output = Vector;
+impl Mul<Vector3> for Vector3 {
+    type Output = Vector3;
 
-    fn mul(self, rhs: Vector) -> Self::Output {
-        Vector{
+    fn mul(self, rhs: Vector3) -> Self::Output {
+        Vector3 {
             x: self.x * rhs.x,
             y: self.y * rhs.y,
             z: self.z * rhs.z,
         }
     }
 }
-impl MulAssign<Vector> for Vector {
-    fn mul_assign(&mut self, rhs: Vector) {
+impl MulAssign<Vector3> for Vector3 {
+    fn mul_assign(&mut self, rhs: Vector3) {
         self.x *= rhs.x;
         self.y *= rhs.y;
         self.z *= rhs.z;
     }
 }
 // MUL SCALAR
-impl Mul<f64> for Vector {
-    type Output = Vector;
+impl Mul<f64> for Vector3 {
+    type Output = Vector3;
 
     fn mul(self, rhs: f64) -> Self::Output {
-        Vector{
+        Vector3 {
             x: self.x * rhs,
             y: self.y * rhs,
             z: self.z * rhs,
@@ -113,7 +113,7 @@ impl Mul<f64> for Vector {
     }
 }
 
-impl MulAssign<f64> for Vector {
+impl MulAssign<f64> for Vector3 {
     fn mul_assign(&mut self, rhs: f64) {
         self.x *= rhs;
         self.y *= rhs;
@@ -121,35 +121,35 @@ impl MulAssign<f64> for Vector {
     }
 }
 // DIV
-impl Div<Vector> for Vector {
-    type Output = Vector;
-    fn div(self, rhs: Vector) -> Self::Output {
-        Vector{
+impl Div<Vector3> for Vector3 {
+    type Output = Vector3;
+    fn div(self, rhs: Vector3) -> Self::Output {
+        Vector3 {
             x: self.x / rhs.x,
             y: self.y / rhs.y,
             z: self.z / rhs.z,
         }
     }
 }
-impl DivAssign<Vector> for Vector {
-    fn div_assign(&mut self, rhs: Vector) {
+impl DivAssign<Vector3> for Vector3 {
+    fn div_assign(&mut self, rhs: Vector3) {
         self.x /= rhs.x;
         self.y /= rhs.y;
         self.z /= rhs.z;
     }
 }
 // DIV SCALAR
-impl Div<f64> for Vector {
-    type Output = Vector;
+impl Div<f64> for Vector3 {
+    type Output = Vector3;
     fn div(self, rhs: f64) -> Self::Output {
-        Vector{
+        Vector3 {
             x: self.x / rhs,
             y: self.y / rhs,
             z: self.z / rhs,
         }
     }
 }
-impl DivAssign<f64> for Vector {
+impl DivAssign<f64> for Vector3 {
     fn div_assign(&mut self, rhs: f64) {
         self.x /= rhs;
         self.y /= rhs;
@@ -157,10 +157,10 @@ impl DivAssign<f64> for Vector {
     }
 }
 // OTHER
-impl Neg for Vector {
-    type Output = Vector;
+impl Neg for Vector3 {
+    type Output = Vector3;
     fn neg(self) -> Self::Output {
-        Vector{
+        Vector3 {
             x: -self.x,
             y: -self.y,
             z: -self.z,
@@ -168,12 +168,12 @@ impl Neg for Vector {
     }
 }
 
-impl Default for Vector {
-    fn default() -> Self { Vector{ x: 0.0, y: 0.0, z: 0.0, } }
+impl Default for Vector3 {
+    fn default() -> Self { Vector3 { x: 0.0, y: 0.0, z: 0.0, } }
 }
 
-impl From<[f64; 3]> for Vector {
+impl From<[f64; 3]> for Vector3 {
     fn from(array: [f64; 3]) -> Self {
-        Vector::new(array[0], array[1], array[2])
+        Vector3::new(array[0], array[1], array[2])
     }
 }

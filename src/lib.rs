@@ -2,6 +2,7 @@ pub mod prelude;
 mod vector;
 mod matrix;
 mod quaternion;
+mod vector2;
 /*
 *   __     __  _____    ____   _____    ___    ____  
 *   \ \   / / | ____|  / ___| |_   _|  / _ \  |  _ \ 
@@ -10,11 +11,18 @@ mod quaternion;
 *      \_/    |_____|  \____|   |_|    \___/  |_| \_\
 */
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Vector {
+pub struct Vector3 {
     pub x: f64,
     pub y: f64,
     pub z: f64,
 }
+
+#[derive(Debug, Copy, Clone, PartialEq)]
+pub struct Vector2 {
+    pub x: f64,
+    pub y: f64,
+}
+
 pub struct Quaternion {
     pub x: f32,
     pub y: f32,

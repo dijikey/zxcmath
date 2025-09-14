@@ -1,8 +1,8 @@
 pub mod prelude;
 mod vector;
+mod vector2;
 mod matrix;
 mod quaternion;
-mod vector2;
 /*
 *   __     __  _____    ____   _____    ___    ____  
 *   \ \   / / | ____|  / ___| |_   _|  / _ \  |  _ \ 

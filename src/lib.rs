@@ -1,3 +1,5 @@
+use std::ops::{Add, AddAssign, Mul};
+
 pub mod prelude;
 mod vector;
 mod vector2;
@@ -11,23 +13,17 @@ mod quaternion;
 *      \_/    |_____|  \____|   |_|    \___/  |_| \_\
 */
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Vector3 {
+pub struct Vector3{
     pub x: f64,
     pub y: f64,
     pub z: f64,
 }
 
 #[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Vector2 {
-    pub x: f64,
-    pub y: f64,
-}
-
-pub struct Quaternion {
-    pub x: f32,
-    pub y: f32,
-    pub z: f32,
-    pub w: f32,
+pub struct Vector2<T>
+where T: Clone + Copy{
+    pub x: T,
+    pub y: T,
 }
 /*
 *    __  __     _   _____  ____   ___ __  __  

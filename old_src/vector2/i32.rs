@@ -22,8 +22,6 @@ impl Vector2<i32>{
         self.x /= len;
         self.y /= len;
     }
-    #[inline]
-    pub const fn unpack_array(self) -> [i32; 2] { [self.x, self.y] }
     // STATIC
     #[inline]
     pub fn distance(lhs: &Self, rhs: &Self) -> i32 { (*lhs - *rhs).length() }

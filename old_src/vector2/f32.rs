@@ -24,8 +24,6 @@ impl Vector2<f32>{
         self.x /= len;
         self.y /= len;
     }
-    #[inline]
-    pub const fn unpack_array(self) -> [f32; 2] { [self.x, self.y] }
     // STATIC
     #[inline]
     pub fn lerp(vec: &Self, vec2: &Self, t: f32) -> Self {

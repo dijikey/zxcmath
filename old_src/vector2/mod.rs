@@ -7,7 +7,14 @@ mod i32;
 impl<T> Vector2<T>
 where T: Clone+Copy{
     #[inline]
-    pub const fn new(x: T, y: T) -> Self { Self { x, y } }
+    pub const fn new(x: T, y: T) -> Self { 
+        Self { x, y } 
+    }
+
+    #[inline]
+    pub const fn unpack(self) -> [T; 2] {
+        [self.x, self.y]
+    }
 }
 
 impl<T> Vector2<T>
